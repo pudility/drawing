@@ -15,13 +15,13 @@ void Updater::logMousePos ( int iXPos, int iYPos )
     std::cout << "X: " << iXPos << " Y: " << iYPos << "\n";
 }
 
-void Updater::Clear( sf::Image *iFrame )
+void Updater::Clear ( sf::Image *iFrame )
 {
     std::cout << "Clearing \n";
     
     for ( int x = 0; x < 100; x++ )
         for ( int y = 0; y < 100; y++ )
-            iFrame->setPixel( x, y, sf::Color( 0, 0, 0 ) );
+            iFrame->setPixel ( x, y, sf::Color( 0, 0, 0 ) );
 }
 
 int Updater::Update( sf::Image *iFrame, sf::Vector2i vWindowPos )
@@ -34,17 +34,15 @@ int Updater::Update( sf::Image *iFrame, sf::Vector2i vWindowPos )
     
     if ( m_Connector->bIsReciving )
     {
-        if (m_Connector->sRead( ) >> iXPos >> iYPos)
-            logMousePos( iXPos, iYPos );
+        if (m_Connector->sRead( ) >> iXPos >> iYPos) { }
         else
             std::cerr << "ERROR: decoding \n";
     }
     else
     {
-        sf::Vector2i v2MousePos = sf::Mouse::getPosition( );
+        sf::Vector2i v2MousePos = sf::Mouse::getPosition ( );
         iXPos = v2MousePos.x - vWindowPos.x;
-        iYPos = v2MousePos.y - vWindowPos.y - sf::VideoMode::getDesktopMode().height/2 - WINDOW_HEIGHT - TOP_OFFSET;
-        logMousePos( iXPos, iYPos );
+        iYPos = v2MousePos.y - vWindowPos.y - sf::VideoMode::getDesktopMode ( ).height/2 - WINDOW_HEIGHT - TOP_OFFSET;
     }
     
     if ( iXPos >= 0 && iXPos <= 800 &&  iYPos >= 0 &&  iYPos <= 800 )
@@ -52,7 +50,7 @@ int Updater::Update( sf::Image *iFrame, sf::Vector2i vWindowPos )
         if ( !m_Connector->bIsReciving )
             Send ( iXPos, iYPos );
         
-        iFrame->setPixel( iXPos/8, iYPos/8, sf::Color( 0, 255, 255 ) );
+        iFrame->setPixel( iXPos/8, iYPos/8, sf::Color ( 0, 255, 255 ) );
     }
     
     return 1;

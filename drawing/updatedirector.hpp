@@ -25,10 +25,10 @@ private:
     int const TOP_OFFSET = 90;
     int const WINDOW_HEIGHT = 800;
     
-    Connector *m_Connector = new Connector ( );
-    
     int iLastXPos = 0;
     int iLastYPos = 0;
+    
+    Connector *m_Connector = new Connector ( );
     
     void logMousePos ( int iXPos, int iYPos );
     void Send ( sf::Uint16 iXPos, sf::Uint16 iYPos );

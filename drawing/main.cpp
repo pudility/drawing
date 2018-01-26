@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     App *aApplication = new App();
-    aApplication->run();
+    aApplication->run ( );
     
     delete aApplication;
     return 0;

@@ -28,9 +28,9 @@ Connector::Connector ( )
     bIsReciving = bFetchUserInput();
     
     if (bIsReciving)
-        server();
+        server ( );
     else
-        client();
+        client ( );
 }
 
 Connector::~Connector ( )
@@ -40,19 +40,19 @@ Connector::~Connector ( )
 
 void Connector::server ( )
 {
-    tListener.listen(iPort);
-    tListener.accept(tSocket);
+    tListener.listen ( iPort );
+    tListener.accept ( tSocket );
 }
 
 void Connector::client ( )
 {
-    tSocket.connect(sIP, iPort);
+    tSocket.connect ( sIP, iPort );
 }
 
 sf::Packet Connector::sRead ( )
 {
     sf::Packet pRecived;
-    pRecived.clear();
+    pRecived.clear ( );
     tSocket.receive( pRecived );
     return pRecived;
 }
@@ -61,7 +61,7 @@ bool Connector::bCheckIfCanRad ( )
 {
     std::string sCheck;
     sRead() >> sCheck;
-    if (sCheck == "R")
+    if ( sCheck == "R" )
         return true;
     else
         return false;

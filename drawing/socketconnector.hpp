@@ -25,6 +25,7 @@ public:
     sf::Packet sRead ( );
     
     bool bCheckIfCanRad ( );
+    bool bIsReciving = true;
 
     template<typename T, typename... Args>
     void vSend ( T tIn, Args... AArgs )
@@ -39,14 +40,13 @@ public:
     {
         pPacketToSend << tIn;
         tSocket.send( pPacketToSend );
-        pPacketToSend.clear();
+        pPacketToSend.clear ( );
     }
-    
-    bool bIsReciving = true;
 private:
+    std::string sIP = "localhost";
+    
     sf::TcpSocket tSocket;
     sf::TcpListener tListener;
-    std::string sIP = "localhost";
     sf::Packet pPacketToSend;
     sf::Packet pLastSent;
 

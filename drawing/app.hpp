@@ -16,7 +16,7 @@
 class App
 {
 public:
-    void run ();
+    void run ( );
 private:
     sf::RenderWindow m_RenderWindow;
     sf::Sprite m_View;
